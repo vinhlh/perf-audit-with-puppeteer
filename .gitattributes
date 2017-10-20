@@ -1,0 +1,3 @@
+src/configs.js filter=git-crypt diff=git-crypt
+infras/*.tfstate filter=git-crypt diff=git-crypt
+infras/*.tfstate.backup filter=git-crypt diff=git-crypt
