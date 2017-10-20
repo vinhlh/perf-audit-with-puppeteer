@@ -3,6 +3,7 @@ const configs = {
     'https://www.zalora.com.ph/women/',
     'https://www.zalora.com.ph/women/clothing/dresses/special-price/'
   ],
+  ravenDsn: 'https://aaa:bbbb@sentry.io/35',
   slack: {
     hook:
       'https://hooks.slack.com/services/xxxx',
