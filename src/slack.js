@@ -9,6 +9,8 @@ const alert = ({ fields, ...rest }) => {
       {
         ...rest,
         color: 'warning',
+        footer: 'PerfAudit',
+        ts: (+new Date())/1000,
         mrkdwn_in: ['text', 'pretext'],
         fields: fields
           ? Object.keys(fields).map(title => ({
