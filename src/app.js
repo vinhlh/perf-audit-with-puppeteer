@@ -38,8 +38,13 @@ const run = async () => {
 
 Raven.config(configs.ravenDsn).install()
 
-try {
-  run()
-} catch (exception) {
-  Raven.captureException(exception)
-}
+run()
+  .then(() => {
+    console.log('Successful')
+    process.exit()
+  })
+  .catch(exception => {
+    Raven.captureException(exception)
+    // HACK: wait for sentry reporting
+    setTimeout(() => process.exit(), 3000)
+  })
