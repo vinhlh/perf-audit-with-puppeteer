@@ -18,7 +18,7 @@ resource "aws_ecr_repository" "perf_audit" {
 
 resource "aws_cloudwatch_event_rule" "perf_audit" {
   name                = "perf-audit"
-  schedule_expression = "rate(5 minutes)"
+  schedule_expression = "rate(1 day)"
 }
 
 resource "aws_cloudwatch_event_target" "perf_audit" {
