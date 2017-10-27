@@ -43,7 +43,7 @@ Raven.config(configs.ravenDsn).install()
 
 run()
   .then(errorCounts => {
-    console.log(`Run successfully with errorCounts = [${errorCounts}`])
+    console.log(`Run successfully with errorCounts = [${errorCounts}]`)
     process.exit()
   })
   .catch(exception => {
