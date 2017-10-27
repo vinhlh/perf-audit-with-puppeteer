@@ -9,7 +9,7 @@ const run = async () => {
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   })
 
-  await Promise.all(
+  const errorCounts = await Promise.all(
     configs.urls.map(async url => {
       const page = await browser.newPage()
       await page.goto(url)
@@ -21,7 +21,8 @@ const run = async () => {
           .map(validator => page.evaluate(validator))
       )
 
-      results.filter(result => !!result).forEach(msg =>
+      const errors = results.filter(result => !!result)
+      errors.forEach(msg =>
         alert({
           ...msg,
           title: url,
@@ -29,18 +30,20 @@ const run = async () => {
         })
       )
 
-      return true
+      return errors.length
     })
   )
 
   await browser.close()
+
+  return errorCounts
 }
 
 Raven.config(configs.ravenDsn).install()
 
 run()
-  .then(() => {
-    console.log('Successful')
+  .then(errorCounts => {
+    console.log(`Run successfully with errorCounts = [${errorCounts}`])
     process.exit()
   })
   .catch(exception => {
