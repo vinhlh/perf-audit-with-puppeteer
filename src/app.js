@@ -22,12 +22,15 @@ const run = async () => {
       )
 
       const errors = results.filter(result => !!result)
-      errors.forEach(msg =>
-        alert({
-          ...msg,
-          title: url,
-          title_link: url
-        })
+
+      await Promise.all(
+        errors.map(msg =>
+          alert({
+            ...msg,
+            title: url,
+            title_link: url
+          })
+        )
       )
 
       return errors.length

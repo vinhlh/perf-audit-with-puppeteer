@@ -1,7 +1,7 @@
-const request = require('request')
+const request = require('request-promise')
 const configs = require('./configs')
 
-const alert = ({ fields, ...rest }) => {
+const alert = async ({ fields, ...rest }) => {
   const { slack: { hook, options } } = configs
   const payload = {
     ...options,
@@ -23,7 +23,7 @@ const alert = ({ fields, ...rest }) => {
     ]
   }
 
-  request.post(
+  await request.post(
     hook,
     {
       form: {
