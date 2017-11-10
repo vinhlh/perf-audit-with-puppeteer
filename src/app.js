@@ -33,7 +33,7 @@ const run = async () => {
         )
       )
 
-      return errors.length
+      return [url, errors.length]
     })
   )
 
@@ -47,7 +47,11 @@ Raven.config(configs.ravenDsn).install()
 run()
   .then(errorCounts => {
     console.log(`Run successfully with errorCounts = [${errorCounts}]`)
-    process.exit()
+    Raven.captureMessage('Run successfully', {
+      level: 'info',
+      extra: { errorCounts }
+    })
+    setTimeout(() => process.exit(), 3000)
   })
   .catch(exception => {
     Raven.captureException(exception)
