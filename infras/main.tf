@@ -9,7 +9,7 @@ variable "ecs_cluster" {
 
 variable "iam_role" {
   type    = "string"
-  default = "arn:aws:iam::589072213673:role/ecsServiceRole"
+  default = "arn:aws:iam::589072213673:role/ecsEventsRole"
 }
 
 resource "aws_ecr_repository" "perf_audit" {
