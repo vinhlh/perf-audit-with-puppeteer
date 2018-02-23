@@ -4,7 +4,7 @@ provider "aws" {
 
 variable "ecs_cluster" {
   type    = "string"
-  default = "arn:aws:ecs:ap-southeast-1:589072213673:cluster/oms-services-ECSCluster-1OC1V236PW8KI"
+  default = "arn:aws:ecs:ap-southeast-1:589072213673:cluster/oms-services"
 }
 
 variable "iam_role" {
